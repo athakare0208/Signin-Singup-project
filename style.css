@@ -1,0 +1,64 @@
+
+
+.nav-link{
+    color : red;
+    }
+
+.nav-link:hover{
+    color:black;
+    font-weight : bold;
+    background-color : yellow;
+    border-radius : 10px;
+    }
+
+.image img{
+    width : 100%;
+    height : 91%;
+    background-repeat : no-repeat;
+    }
+
+.transparentbox{
+    width : 100%;
+    background-color : lightgrey;
+    border : 1px solid #CD853F;
+    opacity : 0.6;
+    }
+
+.transparentbox p{
+    position : absolute;
+    top : 40%;
+    left :38%;
+    color : DarkRed;
+    font-weight : bold;
+    font-size : 60px;
+    font-family : 'Monotype Corsiva';
+    }
+
+.box1  p {
+    font-weight : bold;
+    color : white;
+    font-family : 'Monotype Corsiva';
+    text-align : center;
+    }
+
+.circle{
+    height: 75px;
+    width : 120px;
+    border-radius : 70px 70% 0 0;
+    margin : 0px;
+    background-color : grey;
+    }
+
+.lastcircle{
+    height: 75px;
+    height : 50px;
+    width : 120px;
+    border-radius : 0 0 80px 80px;
+    margin : 0px;
+    background-color : black;
+    color : white;
+    }
+
+
+
+

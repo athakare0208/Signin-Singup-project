@@ -1,0 +1,72 @@
+{% extends 'admin_nav.html' %}
+{% load static %}
+{% block content %}
+
+<script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script src="https://cdn.datatables.net/2.2.2/js/dataTables.js"></script>
+<script src="https://cdn.datatables.net/2.2.2/js/dataTables.bootstrap4.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.css">
+<link rel="stylesheet" href="https://cdn.datatables.net/2.2.2/css/dataTables.bootstrap4.css">
+<script>
+   $(document).ready(function() {
+        $('#userTable').DataTable(); // Initialize DataTable on the user table
+    });
+</script>
+
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-sm-12">
+            <h2 class="text-center">View Users</h2>
+            <hr>
+            {% if users %}
+            <div class="table-responsive">
+                <table class="table table-bordered table-striped" id="userTable"> 
+                    <thead>
+                        <tr>
+                            <th>Sr No.</th>
+                            <th>Full Name</th>
+                            <th>Username</th>
+                            <th>Email</th>
+                            <th>Contact</th>
+                            <th>Branch</th>
+                            <th>Role</th>
+                            <th>Join Date</th> 
+                            <th>DateOfBirth</th>
+                            <th>Gender</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for signup in users %}
+                        <tr>
+                            <td>{{ forloop.counter }}</td>
+                            <td>{{ signup.user.first_name }} {{ signup.user.last_name }}</td>
+                            <td>{{ signup.user.username }}</td>
+                            <td>{{ signup.user.email }}</td>
+                            <td>{{ signup.contact }}</td>
+                            <td>{{ signup.branch }}</td>
+                            <td>{{ signup.role }}</td>
+                            <td>{{ signup.user.date_joined|date:"d-m-Y" }}</td> 
+                            <td>{{ signup.dob }}</td>
+                            <td>{{ signup.gender}}</td>
+                            <td>
+                                <div class="btn-group" role="group">
+                                    <a href="{% url 'delete_user' signup.user.id %}" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure you want to delete this user?')">Delete</a>
+                                </div>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+            {% else %}
+            <div class="alert alert-info text-center">
+                No other users found in the system.
+            </div>
+            {% endif %}
+        </div>
+    </div>
+</div>
+{% endblock %}
